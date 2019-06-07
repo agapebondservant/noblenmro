@@ -22,6 +22,6 @@ for zipfile in ./db_source_files/dbfiles/*.zip; do
    for inputfile in $directoryname/*; do
       inputfilename=`basename $inputfile`
       ## Execute SQL script and generate logs
-      echo exit | sqlplus -s $USERNAME/$PASSWD@//$HOST/$SID @"$inputfile" > db_logs/db_deploy_file_ver"$version"_"$inputfilename".txt | echo "Log generation complete for script - log name: db_deploy_file_ver${version}_${inputfilename}.txt"
+      echo exit | sqlplus -s $USERNAME/$PASSWD@//$HOST/$SID @"$inputfile" > db_logs/db_deploy_file_ver"$version"_"$inputfilename".txt | echo "Log generation complete for script - log file name: db_deploy_file_ver${version}_${inputfilename}.txt"
    done     
 done
