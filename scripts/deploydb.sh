@@ -8,7 +8,7 @@ for zipfile in ./db_source_files/dbfiles/*.zip; do
    unzip $zipfile
    zipfilename=`basename $zipfile .zip`
    ## There must be a version associated with the file (TODO: pass versions from the pipeline instead)
-   if ! [[ $zipfile =~ (^[0-9\.]+)_.* ]]; then 
+   if ! [[ $zipfilename =~ (^[0-9\.]+)_.* ]]; then 
 	echo "ERROR: ${zipfilename} must have a version number associated. Expected format: <version no>_${zipfilename}.zip"; 
         exit -1; 
    else version=${BASH_REMATCH[1]}; fi
