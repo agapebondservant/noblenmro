@@ -1,5 +1,9 @@
 #!/bin/sh
 
+##install  required libraries
+yum -y update
+yum -y install unzip
+
 ## Create output folder to store logs
 mkdir -p db_logs
 
