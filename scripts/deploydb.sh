@@ -2,7 +2,7 @@
 
 ##Install required utilities
 yum -y update
-yum install -y zip
+yum install -y unzip
 
 ## Create output folder to store logs
 mkdir -p db_logs
