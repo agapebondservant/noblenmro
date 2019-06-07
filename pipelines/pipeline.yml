@@ -1,26 +1,48 @@
 ---
 resources:
-  - name: db_source_files
-    type: git
-    source: {uri: agapebondservant/noblenmrodb, skip-ssl-verification: true}
-  - name: db_deployment_files
-    type:  git
-    source: {uri: agapebondservant/noblenmro, skip-ssl-verification: true}
-  - name: db_client
-    type: docker-image
-    source: {repository: oawofolu2/oracleinstantclient, tag: "v1.0"}
+- name: db_source_files
+  type: git
+  source: 
+    uri: https://github.com/agapebondservant/noblenmrodb.git
+    skip-ssl-verification: true
+- name: db_deployment_files
+  type:  git
+  source: 
+    uri: https://github.com/agapebondservant/noblenmro.git
+    skip-ssl-verification: true
+- name: db_log_files
+  type: s3
+  source:
+    bucket: ((logfilebucket))
+    regexp: .*_ver(.*).txt
+    access_key_id: ((accesskey))
+    secret_access_key: ((secret))
 
 jobs:
-  name: deploy_db
+- name: deploy_db
   public: true
   plan:
-    - get: db_source_files
-    - get: db_deployment_files
-    - get: db_client
-      params: {save: true}
-    - task: deploy
-      config:
-        platform: linux
-        run:
-          path: ls
-          args: [-alR]
+  - get: db_source_files
+  - get: db_deployment_files
+  - task: deploy
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source: {repository: oawofolu2/oracleinstantclient, tag: "v1.0"}
+      inputs:
+        - name: db_source_files
+        - name: db_deployment_files
+      outputs:
+        - name: db_logs
+      run:
+        path: ./db_deployment_files/scripts/deploydb.sh
+        args: []
+      params:
+        USERNAME: ((username))
+        PASSWD: ((passwd))
+        HOST: ((host))
+        SID: ((sid))
+  - put: db_log_files
+    params:
+      path: ./db_logs/*.txt  
