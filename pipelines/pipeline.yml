@@ -14,7 +14,7 @@ resources:
   type: s3
   source:
     bucket: ((logfilebucket))
-    regexp: .*_ver(.*).txt
+    regexp: db_deploy_file_ver(.*)_*.txt
     access_key_id: ((accesskey))
     secret_access_key: ((secret))
 
@@ -46,3 +46,4 @@ jobs:
   - put: db_log_files
     params:
       path: ./db_logs/*.txt  
+
