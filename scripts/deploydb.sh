@@ -16,7 +16,7 @@ for zipfile in ./db_source_files/dbfiles/*.zip; do
         exit -1;
    else version=${BASH_REMATCH[1]}; fi
    ##Extract the contents of the zip
-   directoryname=$(unzip ${zipfile} | grep -m1 'creating:' | cut -d' ' -f5-)
+   directoryname=$(unzip ${zipfile} | grep 'creating:' | cut -d' ' -f5-)
    for inputfile in $directoryname/*; do
       inputfilename=`basename $inputfile`
       ## Execute SQL script and generate logs
