@@ -16,8 +16,8 @@ for zipfile in ./db_source_files/dbfiles/*.zip; do
         exit -1;
    else version=${BASH_REMATCH[1]}; fi
    ##Extract the contents of the zip
-   unzip $zipfile
-   for inputfile in $zipfilename/*; do
+   directoryname=$(unzip ${zipfile} | grep -m1 'creating:' | cut -d' ' -f5-)
+   for inputfile in $directoryname/*; do
       inputfilename=`basename $inputfile`
       ## Execute SQL script and generate logs
       echo exit | sqlplus -s $USERNAME/$PASSWD@//$HOST/$SID @"$inputfile" > db_logs/db_deploy_file_ver"$version"_"$inputfilename".txt | echo "Log generation complete for script: db_deploy_file_ver"$version"_${inputfilename}"
