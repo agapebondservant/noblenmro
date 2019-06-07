@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 ##install  required libraries
 yum -y update
 yum -y install unzip
@@ -11,7 +13,7 @@ mkdir -p db_logs
 for zipfile in ./db_source_files/dbfiles/*.zip; do
    zipfilename=`basename $zipfile .zip`
    ## There must be a version associated with the file (TODO: pass versions from the pipeline instead)
-   if ! [[ $zipfilename =~ (^[0-9\.]+)_DbDeployFile_.* ]]; then
+   if ! [[ $zipfilename =~ (^[0-9\.]+)_DbDeployFiles_.* ]]; then
         echo "ERROR: ${zipfilename}.zip must have a version number associated. Expected format: <version no>_DbDeployFile_<filename>.zip";
         exit -1;
    else version=${BASH_REMATCH[1]}; fi
