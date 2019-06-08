@@ -26,4 +26,5 @@ for zipfile in ./db_source_files/dbfiles/*.zip; do
    done     
    ## Provide a new zip of all the log files
    zip -m db_logs/${zipfilename}_logs.zip *.log
+   ls -al db_logs/
 done
