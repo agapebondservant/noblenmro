@@ -17,6 +17,7 @@ resources:
     regexp: ([0-9]+)_.*_logs.zip
     access_key_id: ((accesskey))
     secret_access_key: ((secret))
+    region_name: ((region))
 
 jobs:
 - name: deploy_db
@@ -45,5 +46,4 @@ jobs:
         SID: ((sid))
   - put: db_log_files
     params:
-      path: ./db_logs/*.zip  
-
+      file: ./db_logs/*.zip
