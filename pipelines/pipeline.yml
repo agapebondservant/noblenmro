@@ -14,7 +14,7 @@ resources:
   type: s3
   source:
     bucket: ((logfilebucket))
-    regexp: ([0-9]+)_.*_logs.zip
+    regexp: ([0-9]+)_logs.zip
     access_key_id: ((accesskey))
     secret_access_key: ((secret))
     region_name: ((region))
@@ -38,7 +38,7 @@ jobs:
         - name: db_logs
       run:
         path: ./db_deployment_files/scripts/deploydb.sh
-        args: []
+        args: [((abort_on_db_error))]
       params:
         USERNAME: ((username))
         PASSWD: ((passwd))
