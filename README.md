@@ -1,4 +1,4 @@
-## Deploying Data Files via Concourse Pipeline
+## An Automated Pipeline for Deploying DB Updates for Noble
 NOTE: A running version of the Concourse pipeline job - **deploy_db** - will be available at [http://142.93.14.243:8080](http://142.93.14.243:8080/). To execute a sample build, login as the admin user and trigger a build via the Concourse UI.
 
 ## Overview
