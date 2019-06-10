@@ -4,8 +4,8 @@
 ######################################################################
 
 ## if abort_on_db_error=true, exit if there were errors in the SQL output
-if [ `grep -r "ORA-" ./db_logs/*/*.log | wc -l` -gt 0 ] && [ $1 = 'y' ]; then
-   echo "ERROR: ORA- errors encountered during execution of script(s):"
+if [ `grep -r "ORA-" ./db_logs/ | wc -l` -gt 0 ] && [ $1 = 'y' ]; then
+   echo "ERROR: ORA errors encountered during execution of script(s) - see"
    basename `grep -rl "ORA-" ./db_logs`
    exit 1
 fi

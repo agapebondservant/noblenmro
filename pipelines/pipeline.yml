@@ -38,7 +38,7 @@ jobs:
         - name: db_logs
       run:
         path: ./db_deployment_files/scripts/deploydb.sh
-        args: [((abort_on_db_error))]
+        args: []
       params:
         USERNAME: ((username))
         PASSWD: ((passwd))
@@ -47,3 +47,15 @@ jobs:
   - put: db_log_files
     params:
       file: ./db_logs/*.zip
+  - task: validate_deploy
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source: {repository: ubuntu, tag: "18.04"}
+      inputs:
+        - name: db_deployment_files
+        - name: db_logs
+      run:
+        path: ./db_deployment_files/scripts/validatedeploydb.sh
+        args: [((abort_on_db_error))] 
