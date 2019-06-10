@@ -1,4 +1,4 @@
-###NOTE: Based on the current (legacy) process. For future state, it is recommended to use a DB migration tool instead (such as Flyway or Liquibase). This will make it easier to keep track of database changes in multiple environments, rollback changes when necessary, centralize auditing for DB changes, and initialize a database environment from scratch.
+### NOTE: This is based on the current (legacy) process. For future state, it is recommended to use a DB migration tool instead (such as Flyway or Liquibase). This will make it easier to keep track of database changes in multiple environments, rollback changes when necessary, centralize auditing for DB changes, and initialize a database environment from scratch.
 
 ## An Automated Pipeline for Data Migrations for Noble/IFS
 NOTE: A running version of the Concourse pipeline job - **deploy_db** - will be available at [http://142.93.14.243:8080](http://142.93.14.243:8080/). To execute a sample build, login as the admin user and trigger a build via the Concourse UI.
