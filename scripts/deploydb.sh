@@ -3,8 +3,8 @@
 set -e
 
 ##install  required libraries
-yum -y update
-yum -y install zip unzip
+#yum -y update
+#yum -y install zip unzip
 
 ## Create output folder to store logs
 mkdir -p db_logs

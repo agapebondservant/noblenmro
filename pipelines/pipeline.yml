@@ -30,7 +30,7 @@ jobs:
       platform: linux
       image_resource:
         type: docker-image
-        source: {repository: oawofolu2/oracleinstantclient, tag: "v1.0"}
+        source: {repository: oawofolu2/oracleinstantclient, tag: "1.0"}
       inputs:
         - name: db_source_files
         - name: db_deployment_files
