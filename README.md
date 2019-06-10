@@ -28,3 +28,6 @@ This should be forked and tweaked as appropriate for different environments/SDLC
       fly -t <your target> sp -c pipeline.yml -l creds.yml -p deploy_db -v abort_on_db_error=y
      ```
      - See the ***scripts/deploydb.sh*** shell script for documentation describing what the task does in more detail. 
+
+4. All logs from the prior step will be stored at the predefined resource location for the task output (i.e. S3 bucket/git repo etc). The task output is configured under *db_log_files* in the pipeline.yml file. 
+     - Note: If *abort_on_db_error* is enabled, the pipeline might be aborted before executing all the available scripts, so the output directory will only include logs up until the point of error.
