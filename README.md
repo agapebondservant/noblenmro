@@ -1,4 +1,4 @@
-(#### NOTE: This is based on the current (legacy) process. For future state, it is recommended to use a DB migration tool instead (such as Flyway or Liquibase). This will make it easier to keep track of database changes in multiple environments, rollback changes when necessary, centralize auditing for DB changes, and initialize a database environment from scratch.)
+**(NOTE: This is based on the current (legacy) process. For future state, it is recommended to use a DB migration tool instead (such as Flyway or Liquibase). This will make it easier to keep track of database changes in multiple environments, rollback changes when necessary, centralize auditing for DB changes, and initialize a database environment from scratch.)**
 _______________
 
 
