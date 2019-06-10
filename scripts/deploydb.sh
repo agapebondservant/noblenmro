@@ -39,7 +39,7 @@ for zipfile in ./db_source_files/dbfiles/*.zip; do
       echo exit | sqlplus -s $USERNAME/$PASSWD@//$HOST/$SID @"$inputfile" > db_logs/"$zipfilename"/"$inputfilename".log | echo "Log generation complete for script: ${inputfilename}"
       ## if abort_on_db_error=true, exit if there were errors in the SQL output
       if [ `grep -r "ORA-" ./db_logs/"$zipfilename"/ | wc -l` -gt 0 ] && [ $1 = 'y' ]; then
-      	echo "ERROR: ORA- errors encountered during DB script execution"
+      	echo "ERROR: ORA- errors encountered during execution of script: ${inputfilename}"
         exit -1
       fi
    done     
