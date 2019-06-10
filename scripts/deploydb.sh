@@ -12,7 +12,8 @@
 #NOTE:
 #If there are any shell script errors along the way, the script will exit with a non-zero code, hence causing the Concourse pipeline to fail.
 #If there are any errors related to the actual DB scripts, by default the script will continue as normal. DB errors will be captured in the log files.
-#To change this default behavior and cause the script to abort when there are DB errors, set the Concourse parameter "abort_on_db_error" to y, 
+#To change this default behavior and cause the script to abort when there are DB errors, set the Concourse parameter "abort_on_db_error" to y.
+#This will cause the validatedeploydb.sh script to be executed. See validatedeploydb.sh for more details.
 ######################################################################################################################################
 
 set -e
@@ -37,11 +38,6 @@ for zipfile in ./db_source_files/dbfiles/*.zip; do
       inputfilename=`basename $inputfile`
       ## Execute SQL script and generate logs
       echo exit | sqlplus -s $USERNAME/$PASSWD@//$HOST/$SID @"$inputfile" > db_logs/"$zipfilename"/"$inputfilename".log | echo "Log generation complete for script: ${inputfilename}"
-      ## if abort_on_db_error=true, exit if there were errors in the SQL output
-      #if [ `grep -r "ORA-" ./db_logs/"$zipfilename"/ | wc -l` -gt 0 ] && [ $1 = 'y' ]; then
-      #	echo "ERROR: ORA- errors encountered during execution of script: ${inputfilename}"
-      #  exit -1
-      #fi
    done     
 done
 
