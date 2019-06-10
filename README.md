@@ -6,7 +6,7 @@ _______________
 NOTE: A running version of the Concourse pipeline job - **deploy_db** - will be available at [http://142.93.14.243:8080](http://142.93.14.243:8080/). To execute a sample build, login as the admin user and trigger a build via the Concourse UI.
 
 ## Overview
-Allows for the automation of the Noble IFS database deployment/update process. It extracts the data script files from a repo/store, uses Oracle InstanceClient SQLPlus to execute the files, and stores their output to a different repo/store. 
+Allows for the automation of the Noble IFS database deployment/migration process. It extracts the data script files from a repo/store, uses Oracle InstanceClient SQLPlus to execute the files, and stores their output to a different repo/store. 
 This should be forked and tweaked as appropriate for different environments/SDLCs. Setup is as follows:
 
  1. Before triggering the pipeline, all pipeline dependencies are stored in a version control repository (i.e. git repo) for the main pipeline task. They are configured under *db_deployment_files* in the pipeline.yml file. They include 
