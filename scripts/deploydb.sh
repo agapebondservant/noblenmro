@@ -42,5 +42,5 @@ for zipfile in ./db_source_files/dbfiles/*.zip; do
 done
 
 ## Provide a new zip of all the log files
-zip -m db_logs/`date +%Y%m%d%H%M%S`_logs.zip db_logs/*
+zip db_logs/`date +%Y%m%d%H%M%S`_logs.zip db_logs/*
 ls -al db_logs/
